@@ -6,6 +6,8 @@ import com.company.livescorecrud.service.kafka.KafkaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MatchService {
     private final MatchRepository matchRepository;
@@ -25,4 +27,11 @@ public class MatchService {
     }
 
 
+    public List<Match> getAllMatches() {
+        return matchRepository.findAll();
+    }
+
+    public List<Match> getLiveMatches() {
+        return null;
+    }
 }

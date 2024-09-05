@@ -5,7 +5,9 @@ import com.company.livescorecrud.entity.Team;
 import com.company.livescorecrud.repository.TeamRepository;
 import com.company.livescorecrud.service.kafka.KafkaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TeamService {
     private final TeamRepository teamRepository;
 

@@ -12,6 +12,10 @@ public class Team {
 
     private String teamName;
 
+    @ManyToOne
+    @JoinColumn(name = "league_id")
+    private League league;
+
     public Long getTeamId() {
         return teamId;
     }
@@ -26,5 +30,13 @@ public class Team {
 
     public void setTeamName(String teamName) {
         this.teamName = teamName;
+    }
+
+    public League getLeague() {
+        return league;
+    }
+
+    public void setLeague(League league) {
+        this.league = league;
     }
 }
