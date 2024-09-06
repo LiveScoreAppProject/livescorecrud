@@ -2,6 +2,7 @@ package com.company.livescorecrud.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,7 +15,7 @@ public class League {
     private String leagueName;
 
     @OneToMany(mappedBy = "league", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Team> teams;
+    private Set<Team> teams = new HashSet<>();
 
     public Long getLeagueId() {
         return leagueId;

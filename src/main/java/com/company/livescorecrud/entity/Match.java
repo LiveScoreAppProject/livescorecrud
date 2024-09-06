@@ -2,6 +2,8 @@ package com.company.livescorecrud.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "matches")
@@ -22,7 +24,16 @@ public class Match {
     @ManyToOne
     @JoinColumn(name = "team_away_id")
     private Team awayTeam;
-    private String status;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Event> events = new ArrayList<>();;
+
+    @Enumerated(EnumType.STRING)
+    private STATUS status;
+
+    public enum STATUS{
+        COMPLETED, HALF_TIME, LIVE;
+    }
 
     public String getMatchId() {
         return matchId;
@@ -72,11 +83,19 @@ public class Match {
         this.awayTeam = awayTeam;
     }
 
-    public String getStatus() {
+    public List<Event> getEvents(){
+        return events;
+    }
+
+    public void setEvents(List<Event> events){
+        this.events = events;
+    }
+
+    public STATUS getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(STATUS status) {
         this.status = status;
     }
 }
